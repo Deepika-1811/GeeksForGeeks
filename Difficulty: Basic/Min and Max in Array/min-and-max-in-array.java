@@ -1,44 +1,19 @@
-// User function Template for Java
-// User function Template for Java
-
-/*
-class Pair<K, V> {
-    private final K key;
-    private final V value;
-
-    public Pair(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-
-    public K getKey() {
-        return key;
-    }
-
-    public V getValue() {
-        return value;
-    }
-}
-
-Java users need to return result in Pair class
-For Example -> return new Pair(minimum,maximum)
-*/
-
 class Solution {
-    public Pair<Integer, Integer> getMinMax(int[] arr) {
-        // Code Here
-        int min =arr[0];
+    public ArrayList<Integer> getMinMax(int[] arr) {
+        // code Here
+        ArrayList<Integer> result = new ArrayList<>();
+        int min = arr[0];
         int max = arr[0];
-        
-            for(int i=0;i<arr.length;i++){
-                if(arr[i]<min){
-                    min = arr[i];
-                }
-                if(arr[i]>max){
-                    max = arr[i];
-                }
+        for(int i:arr){
+            if(i<=min){
+                min = i;
             }
-            
-        return new Pair<>(min,max);
+            if(i>=max){
+                max = i;
+            }
+        }
+        result.add(min);
+        result.add(max);
+        return result;
     }
 }
