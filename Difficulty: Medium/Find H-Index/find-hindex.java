@@ -1,28 +1,24 @@
 class Solution {
     public int hIndex(int[] citations) {
         // code here
-          Arrays.sort(citations);
-       int n=citations.length,ans=0,left=1,right=0;
-       for(int i=0;i<n;i++){
-           if(right<citations[i])
-              right=citations[i];
-       }
-       while(left<=right){
-           int mid=(left+right)/2;
-           int flag=0;
-           for(int i=0;i<n;i++){
-               if(mid<=citations[i] && mid<=n-i){
-                   ans=mid;
-                   left=mid+1;
-                   flag=1;
-                   break;
-               }
-           }
-           if(flag==0)
-             right=mid-1;
-       }
-       return ans;
-   
+        int n = citations.length;
+        int freq[] = new int[n+1];
+        
+        for(int i=0;i<=n-1;i++){
+            if(citations[i]>=n){
+                freq[n] = freq[n]+1;
+            }
+            else{
+                freq[citations[i]] = freq[citations[i]]+1;
+            }
+        }
+        int idx = n;
+        int s = freq[n];
+        while(s<idx){
+            idx--;
+            s += freq[idx];
+            
+        }
+        return idx;
     }
-} 
-
+}
