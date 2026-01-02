@@ -2,33 +2,28 @@ class Solution {
     public void sort012(int[] arr) {
         // code here
         int n = arr.length;
-        int c0 = 0;
-        int c1 =0;
-        int c2 = 0;
-        for(int i=0;i<=n-1;i++){
-          if(arr[i]==0){
-              c0 = c0+1;
-          }  
-          else if (arr[i]==1){
-              c1 = c1+1;
-          }
-          else{
-              c2 = c2+1;
-          }
+        int lo = 0;
+        int mid =0;
+        int hi = n-1;
+        while(mid<=hi){
+            if(arr[mid]==0){
+                int temp = arr[lo];
+                arr[lo] = arr[mid];
+                 arr[mid] = temp;
+                lo ++;
+                mid++;
+            }
+                else if(arr[mid]==1){
+                    mid++;
+                }
+                else{
+                    int temp = arr[mid];
+                 arr[mid] = arr[hi];
+                 arr[hi] = temp;
+                hi--;
+                }
+            }
         }
-        int ind = 0;
-        for(int i =1;i<=c0;i++){
-            arr[ind] =0;
-            ind = ind+1;
-        }
-        for(int i =1;i<=c1;i++){
-            arr[ind] =1;
-            ind = ind+1;
-        }
-        for(int i =1;i<=c2;i++){
-            arr[ind] =2;
-            ind = ind+1;
-        }
-        
-    }
+       
+    
 }
